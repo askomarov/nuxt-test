@@ -1,8 +1,15 @@
+<script setup>
+const props = defineProps({
+  size: Number,
+});
+</script>
 <template>
   <svg
     id="icon-play"
     viewBox="0 0 32 32"
     fill="currentColor"
+    :width="props.size"
+    :height="props.size"
   >
     <path
       d="M21.216 15.168l-7.616-5.088c-0.672-0.416-1.504 0.032-1.504 0.832v10.176c0 0.8 0.896 1.248 1.504 0.832l7.616-5.088c0.576-0.416 0.576-1.248 0-1.664z"

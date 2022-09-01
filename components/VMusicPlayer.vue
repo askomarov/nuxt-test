@@ -37,6 +37,7 @@
             &#128072;
           </button>
           <ButtonPlay
+            :size="64"
             class="btn btn--play"
             :isPlaying="isPlaying"
             type="button"
@@ -257,6 +258,7 @@ h2 {
   transform-style: preserve-3d;
   transition: transform 0.5s ease 0s;
 }
+
 .player__front {
   display: flex;
   flex-direction: column;
@@ -282,13 +284,13 @@ h2 {
     box-shadow: 0px 10px 40px 0px rgb(76 70 124 / 50%);
   }
   &::after {
-    background: inherit;
+    content: "";
+    background: linear-gradient(45deg, rgb(97, 196, 182), rgb(0, 255, 157));
     border-radius: inherit;
     left: 50%;
-    filter: blur(10px);
+    filter: blur(15px);
     opacity: 0.9;
     transform: translateX(-50%);
-    content: "";
     width: 75%;
     height: 100%;
     position: absolute;
@@ -298,9 +300,16 @@ h2 {
 }
 .player--playlist {
   transform: rotateY(180deg);
+  background-color: inherit;
   .flip--front {
+    z-index: -1;
     pointer-events: none;
     backface-visibility: hidden;
+  }
+  .flip--back {
+    z-index: 1;
+    border-radius: inherit;
+    background: #caf0f8;
   }
 }
 .flip {
@@ -396,16 +405,15 @@ h2 {
 }
 .btn--play {
   position: relative;
+  z-index: 2;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   border: 0;
   color: #023e8a;
-  #icon-play {
-    width: 100%;
-    height: 100%;
-  }
-  #icon-pause {
+
+  svg {
+    position: absolute;
     width: 100%;
     height: 100%;
   }
@@ -430,11 +438,9 @@ h2 {
   background-color: #0077b6;
   border-radius: 10px;
 }
-.playlist {
-  h3 {
-    color: #03045e;
-    margin-bottom: 0.5em;
-  }
+h3 {
+  color: #03045e;
+  margin-bottom: 0.5em;
 }
 .playlist__song {
   display: block;
