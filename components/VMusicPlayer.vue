@@ -1,12 +1,13 @@
 <template>
-  <div>
+  <div class="container">
     <h2>My music</h2>
     <button
       class="btn btn--show-playlist"
       type="button"
       @click="showPlaylist"
     >
-      Playlist
+      <span v-if="!isPlayListShown"> Show Playlist &#127926; </span>
+      <span v-else>Show Player &#128189;</span>
     </button>
 
     <div
@@ -211,7 +212,6 @@ export default {
       this.updateBar(e.pageX);
     },
     favorite() {
-      console.log(this.current);
       this.current.favorited = !this.current.favorited;
     },
     showPlaylist() {
@@ -237,7 +237,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 .player {
+  margin: 0 auto;
   color: #03045e;
   background: #caf0f8;
   font-size: 16px;
@@ -360,7 +366,12 @@ export default {
   justify-content: center;
 }
 .btn--show-playlist {
+  font-weight: 600;
+  width: auto;
+  display: block;
+  padding: 0.5rem 1rem;
   font-size: 1em;
+  margin: 0 auto 0.5rem;
 }
 .btn--arrow {
   width: 46px;
@@ -389,7 +400,7 @@ export default {
   height: 64px;
   border-radius: 50%;
   border: 0;
-  fill: #023e8a;
+  color: #023e8a;
   #icon-play {
     width: 100%;
     height: 100%;

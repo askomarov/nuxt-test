@@ -1,0 +1,15 @@
+.container {
+  box-sizing: border-box;
+  min-width: $min-width;
+  max-width: $max-width;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @media (min-width: $width-mobile-h) {
+    padding: 0 20px;
+  }
+
+  @media (min-width: $width-tablet) {
+    padding: 0 24px;
+  }
+}

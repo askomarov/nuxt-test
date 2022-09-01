@@ -1,42 +1,47 @@
-<script setup>
-const headerLinks = [
-  {
-    href: "#",
-    text: "Mobile Top Up",
-    isActive: true,
+<script>
+import { ref } from "vue";
+
+export default {
+  setup() {
+    const isOpened = ref(false);
+    const headerLinks = [
+      {
+        href: "/",
+        text: "Player",
+      },
+      {
+        href: "/about",
+        text: "About",
+      },
+      {
+        href: "/team",
+        text: "Team",
+      },
+      {
+        href: "/contact",
+        text: "Contact",
+      },
+    ];
+    return { isOpened, headerLinks };
   },
-  {
-    href: "/about",
-    text: "About",
-  },
-  {
-    href: "/about",
-    text: "Rate",
-  },
-  {
-    href: "/about",
-    text: "Help",
-  },
-];
-function toggelMenu() {
-  console.log("click");
-}
+};
 </script>
+
 <template lang="pug">
 header.header
   .header__wrapper.container
     .header__start
-      a(href="#").header__logo
+      NuxtLink(to="/").header__logo
         img(src="assets/icon-logo.svg" width="40" height="40" alt="some desctr text")
         span.header__logo-text Global
     .header__middle
       nav.header__nav.nav
-        button(type="button" aria-expanded="false" @click="toggelMenu").nav__toggle
+        button(type="button" :aria-expanded="isOpened" @click="isOpened = !isOpened").nav__toggle
           span.nav__toggle-icon
         ul.nav__wrapper
           li(v-for="link, index  in headerLinks" :key="index").nav__item
-            NuxtLink(:to="`${link.href}`" class="nav__item-link" :class="{ 'nav__item-link--active' : index == 0}") {{ link.text }}
-    a(href="").header__sing-up-btn.main-btn Sign Up
+            NuxtLink(:to="`${link.href}`" class="nav__item-link") {{ link.text }}
+    a.header__sing-up-btn.main-btn Sign Up
 </template>
 
 <style lang="scss" scoped>
@@ -116,14 +121,9 @@ header.header
     align-items: center;
     justify-content: center;
   }
-  .nav__wrapper.active {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 .nav__item-link {
-  font-size: 2rem;
+  font-size: 1rem;
   padding: 5px 18px;
   display: block;
   line-height: 24px;
@@ -148,12 +148,9 @@ header.header
       width: 21px;
     }
   }
-  @media (min-width: $width-tablet) {
-    font-size: 1rem;
-  }
 }
 
-.nav__item-link--active {
+.nav__item-link.router-link-exact-active {
   &::after {
     width: 21px;
   }
@@ -173,6 +170,11 @@ header.header
   &::after,
   &::before {
     width: 25%;
+  }
+  ~ .nav__wrapper {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
