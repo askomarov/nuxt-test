@@ -58,13 +58,15 @@
           </span>
         </h3>
         <!-- progress bar -->
-        <div class="progress">
+        <div
+          class="progress"
+          ref="progress"
+        >
           <span class="progress__time">{{ currentTime }}</span>
           <span class="progress__duration">{{ duration }}</span>
           <div
             class="progress__bar"
             @click="clickProgress"
-            ref="progress"
           >
             <div
               class="progress__current"
@@ -145,14 +147,12 @@ export default {
         this.player.pause();
         this.isPlaying = false;
       }
-      // this.isPlaying = true;
-      // return this.player.play();
     },
     pause() {
       this.isPlaying = false;
       return this.player.pause();
     },
-    prev() {
+    next() {
       this.index++;
       if (this.index > this.songs.length - 1) {
         this.index = 0;
@@ -160,7 +160,7 @@ export default {
       this.current = this.songs[this.index];
       this.play(this.current);
     },
-    next() {
+    prev() {
       this.index--;
       if (this.index < 0) {
         this.index = this.songs.length - 1;
@@ -194,8 +194,7 @@ export default {
     updateBar(x) {
       let progress = this.$refs.progress;
       let maxduration = this.player.duration;
-      let position = x - progress.offsetLeft;
-      let percentage = (100 * position) / progress.offsetWidth;
+      let percentage = (100 * x) / progress.offsetWidth;
       if (percentage > 100) {
         percentage = 100;
       }
@@ -210,7 +209,7 @@ export default {
     },
     clickProgress(e) {
       this.player.pause();
-      this.updateBar(e.pageX);
+      this.updateBar(e.layerX);
     },
     favorite() {
       this.current.favorited = !this.current.favorited;
@@ -219,7 +218,7 @@ export default {
       this.isPlayListShown = !this.isPlayListShown;
     },
   },
-  mounted() {
+  created() {
     let vm = this;
     this.current = this.songs[0];
     this.player = new Audio();
