@@ -1,3 +1,14 @@
+<script setup>
+
+
+
+
+</script>
+
 <template>
-  <h2>Contact page</h2>
+  <div>
+    <h2>Contact page</h2>
+    <NuxtLink to="/search">to search page</NuxtLink>
+
+  </div>
 </template>

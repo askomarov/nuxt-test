@@ -4,6 +4,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   target: 'static',
   ssr: false,
+  modules: ['@nuxtjs/tailwindcss'],
   vite: {
     css: {
       preprocessorOptions: {

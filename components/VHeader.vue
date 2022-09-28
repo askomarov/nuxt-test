@@ -21,6 +21,11 @@ export default {
         href: "/contact",
         text: "Contact",
       },
+      // search
+      {
+        href: "/search",
+        text: "TV Shows",
+      },
     ];
     return { isOpened, headerLinks };
   },
