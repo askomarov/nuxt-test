@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from "vue";
-
 const shows = ref([]);
 const search = ref("");
 const URL = "https://api.tvmaze.com/search/shows?q=";
@@ -18,52 +16,51 @@ async function submit() {
 </script>
 
 <template>
-  <div>
-    <div class="container">
-      <h2>Find TV Shows</h2>
-      <form
-        @submit.prevent="submit"
-        class="relative inline-grid grid-cols-[1fr,auto] rounded-xl p-2 border border-dark-300 gap-1 mb-5"
-      >
-        <input
-          class="border border-dark-300 rounded-xl p-2 width-full height-full"
-          type="text"
-          name="search show value"
-          id="search show value"
-          v-model="search"
-        />
-        <button
-          type="submit"
-          class="btn rounded-xl"
+  <div class="container">
+    <h2>Find TV Shows</h2>
+    <form
+      @submit.prevent="submit"
+      class="
+        relative
+        inline-grid
+        grid-cols-[1fr,auto]
+        rounded-xl
+        p-2
+        border border-dark-300
+        gap-1
+        mb-5
+      "
+    >
+      <input
+        class="border border-dark-300 rounded-xl p-2 width-full height-full"
+        type="text"
+        name="search show value"
+        id="search show value"
+        v-model="search"
+      />
+      <button type="submit" class="btn rounded-xl">Seacrh</button>
+    </form>
+    <ul class="shows">
+      <li class="show" v-for="show in shows" :key="show.id">
+        <!-- <NuxtLink :to="`/search/${show.show.id}`" class="show-item-link"> -->
+        <NuxtLink
+          :to="{ name: 'search-id', params: { id: show.show.id } }"
+          class="show-item-link"
         >
-          Seacrh
-        </button>
-      </form>
-      <ul class="shows">
-        <li
-          class="show"
-          v-for="show in shows"
-          :key="show.id"
-        >
-          <NuxtLink
-            :to="`/search/${show.show.id}`"
-            class="show-item-link"
-          >
-            <span>
-              {{ show.show.name }}
-            </span>
-            <div class="relative overflow-hidden w-full aspect-[9/15] mt-2">
-              <img
-                :src="show.show.image?.medium"
-                width="120"
-                height="120"
-                :alt="show.show.name"
-              />
-            </div>
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+          <span>
+            {{ show.show.name }}
+          </span>
+          <div class="relative overflow-hidden w-full aspect-[9/15] mt-2">
+            <img
+              :src="show.show.image?.medium"
+              width="120"
+              height="120"
+              :alt="show.show.name"
+            />
+          </div>
+        </NuxtLink>
+      </li>
+    </ul>
   </div>
 </template>
 <style lang="scss">

@@ -5,13 +5,13 @@ export default defineNuxtConfig({
   target: 'static',
   ssr: false,
   modules: ['@nuxtjs/tailwindcss'],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/styles.scss" as *;'
-        }
-      }
-    }
-  }
+  // vite: {
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: '@use "@/assets/styles.scss" as *;'
+  //       }
+  //     }
+  //   }
+  // }
 })

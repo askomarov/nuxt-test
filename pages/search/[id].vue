@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
 const route = useRoute();
 const episodes = ref([]);
 const URL = ` https://api.tvmaze.com/shows/${route.params.id}?embed=episodes`;

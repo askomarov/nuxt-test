@@ -393,7 +393,7 @@ h2 {
   right: 0.5em;
   font-size: 2em;
   text-shadow: 0 2px 6px rgba(136, 10, 10, 0.5);
-  transition: filter $transition, text-shadow $transition;
+  transition: filter 0.3s ease 0s, text-shadow 0.3s ease 0s;
   filter: grayscale(1);
   &.active {
     text-shadow: 1px 2px 6px rgb(81 34 233 / 75%);

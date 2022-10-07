@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue";
 const msg = "Hello World";
 const counter = ref(0);
-const URL = " https://pokeapi.co/api/v2/pokemon/pikachu";
+const URLp = "https://pokeapi.co/api/v2/pokemon/pikachu";
 const pokemon = ref(null);
 
 async function writeInConsole(text: string) {
   counter.value++;
-  console.log(text);
-  const pokeInfo = await fetch(URL);
+  const pokeInfo = await fetch(URLp);
   const pokeInfoJson = await pokeInfo.json();
   pokemon.value = pokeInfoJson;
-  console.log(pokemon.value);
 }
 </script>
 <template>
-  <div>
+  <div class="container">
     <h2>about</h2>
     <Counter :counter="counter" />
-    <VButton @writeInConsole="writeInConsole" class="green"/>
-    <VButtonTS
-      @writeInConsole="writeInConsole"
-      :msg="msg"
-    />
+    <VButton @writeInConsole="writeInConsole" class="green" />
+    <VButtonTS @writeInConsole="writeInConsole" :msg="msg" />
 
     <div v-if="pokemon">
       <img
@@ -34,4 +28,6 @@ async function writeInConsole(text: string) {
     </div>
   </div>
 </template>
-<style></style>
+
+<style lang="scss">
+</style>

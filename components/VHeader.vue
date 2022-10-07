@@ -54,7 +54,7 @@ header.header
   position: relative;
   z-index: 2;
   background-color: transparent;
-  @media (min-width: $width-tablet) {
+  @media (min-width: 768px) {
     padding-top: 26px;
     padding-bottom: 30px;
   }
@@ -68,18 +68,18 @@ header.header
   padding-bottom: 1rem;
 }
 
-@media (min-width: $width-tablet) {
+@media (min-width: 768px) {
   .header__wrapper {
     padding-top: 0;
     padding-bottom: 0;
   }
 }
 .header__middle {
-  @media (min-width: $width-tablet) {
+  @media (min-width: 768px) {
     margin-left: 22px;
   }
 }
-@media (max-width: $width-tablet) {
+@media (max-width: 768px) {
   .header__end {
     padding-right: 4rem;
   }
@@ -97,7 +97,7 @@ header.header
   line-height: 38px;
   color: #2d2d2d;
 }
-@media (min-width: $width-tablet) {
+@media (min-width: 768px) {
   .nav__wrapper {
     display: flex;
     gap: 8px;
@@ -107,7 +107,7 @@ header.header
   }
 }
 
-@media (max-width: $width-tablet) {
+@media (max-width: 768px) {
   .nav__wrapper {
     position: absolute;
     top: 100%;
@@ -119,8 +119,8 @@ header.header
     visibility: hidden;
     opacity: 0;
     transform: translateX(-100%);
-    transition: transform $transition, opacity $transition,
-      visibility $transition;
+    transition: transform 0.3s ease 0s, opacity 0.3s ease 0s,
+      visibility 0.3s ease 0s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,7 +167,7 @@ header.header
   width: 42px;
   height: 4px;
   border-radius: 4px;
-  background-color: $primary-color;
+  background-color: var(--primary-color);
 }
 .nav__toggle[aria-expanded="true"] {
   gap: 4px;
@@ -183,7 +183,7 @@ header.header
   }
 }
 
-@media (max-width: $width-tablet) {
+@media (max-width: 768px) {
   .nav__toggle {
     display: grid;
     justify-content: stretch;
@@ -201,7 +201,7 @@ header.header
       width: 42px;
       height: 4px;
       border-radius: 4px;
-      background-color: $primary-color;
+      background-color: var(--primary-color);
       transition: width 0.3s ease 0s;
     }
     &::after {
